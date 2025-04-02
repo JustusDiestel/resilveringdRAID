@@ -2,16 +2,13 @@ import subprocess
 import time
 from datetime import datetime
 
-# Dieser Code simuliert den rebuild/resilvering prozess auf dRAID Pools
-# Vor jedem Test sollte man die FILL_LEVELS Variable anpassen entsprechend den Wünschen
 
-
-#Poolname; Mountpoint; Füllstand festlegen
+#test parameter festlegen
 POOL_NAME = "mypool"
 MOUNTPOINT = "/mnt/draidBenchmark"
-FILL_LEVELS = [0.05]  # Pool-Füllstand für Test, z. B. 5%
+FILL_LEVELS = [0.05]
 SPARES = 1
-
+NUMJOBS_LIST = [1, 4, 8]
 
 def run_cmd(cmd, check=True):
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -20,27 +17,24 @@ def run_cmd(cmd, check=True):
         print(result.stderr)
     return result.stdout.strip()
 
-
-#hier noch evtl smartctl werte einbauen um  Zombie disks zu vermeiden 
-#kann man bestimmt besser lösen aber für unsere Versuche reicht es 
+#geht besser aber funktioniert
 def get_valid_disk_paths():
     cmd = r'''
 for dev in /dev/sd*
-    do
-        [[ "$dev" =~ [0-9] ]] && continue
-        id=$(smartctl -i "$dev" 2>/dev/null | grep 'Logical Unit id' | awk '{print $4}')
-        if [[ ${#id} -eq 18 ]]; then
-            for prefix in /dev/disk/by-id/wwn-* 
-		do
-                	if [[ -e "$prefix" ]] && [[ "$(readlink -f "$prefix")" == "$(readlink -f "$dev")" ]]
-				then
-                    		echo "$prefix"
-                    		break
-                	fi
-            	done
-        fi
-    done
-    '''
+do
+    [[ "$dev" =~ [0-9] ]] && continue
+    id=$(smartctl -i "$dev" 2>/dev/null | grep 'Logical Unit id' | awk '{print $4}')
+    if [[ ${#id} -eq 18 ]]; then
+        for prefix in /dev/disk/by-id/wwn-*
+        do
+            if [[ -e "$prefix" ]] && [[ "$(readlink -f "$prefix")" == "$(readlink -f "$dev")" ]]; then
+                echo "$prefix"
+                break
+            fi
+        done
+    fi
+done
+'''
     result = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True)
     if result.returncode != 0:
         print("Fehler beim Abrufen der Disk-Pfade:")
@@ -66,7 +60,7 @@ def generate_rg_configs(dev_paths):
 
         vdev_config = f"draid2:{data}d:{spares}s:{children}c"
         vdev_devs = " ".join(dev_paths)
-        zpool_cmd = ( #hier gibt es noch Optimierungsmöglichkeiten (aktuell etwa 2Gb write Bandbreite)
+        zpool_cmd = ( #potentielles optimieren hier
             f"zpool create -f -m {MOUNTPOINT} -o ashift=12 {POOL_NAME} \\\n"
             f"  {vdev_config} {vdev_devs}"
         )
@@ -82,7 +76,7 @@ def generate_rg_configs(dev_paths):
             "used_disks": dev_paths
         })
 
-    configs.sort(key=lambda x: x["data"]) #Ich fange rein aus Ueberwachungsgründen mit den vermeindlich besseren (schnelleren) configs an. Ist eigentlich egal
+    configs.sort(key=lambda x: x["data"])
     return configs
 
 def create_pool(pool_cmd, used_disks):
@@ -95,8 +89,8 @@ def create_pool(pool_cmd, used_disks):
     print("[INFO] Deaktiviere Kompression...")
     run_cmd(f"zfs set compression=off {POOL_NAME}")
 
-def fill_pool(level, num_vdevs):
-    print(f"[INFO] Fülle Pool zu {int(level * 100)}% mit fio...")
+def fill_pool(level, numjobs):
+    print(f"[INFO] Fülle Pool zu {int(level * 100)}% mit fio, numjobs={numjobs}...")
 
     output = run_cmd(f"zfs list -Hp -o available {POOL_NAME}")
     available_bytes = int(output.strip())
@@ -109,15 +103,15 @@ def fill_pool(level, num_vdevs):
         print("[INFO] Kein Füllbedarf, überspringe fio.")
         return
 
-    per_file_gib = max(1, fill_size_gib // num_vdevs)
-    filenames = [f"{MOUNTPOINT}/fillfile_{i}" for i in range(num_vdevs)]
+    per_file_gib = max(1, fill_size_gib // numjobs)
+    filenames = [f"{MOUNTPOINT}/fillfile_{i}" for i in range(numjobs)]
     fio_filename_str = ":".join(filenames)
 
-    fio_cmd = ( #hier gibt es noch Optimierungsmöglichkeiten 
+    fio_cmd = ( #potentielles optimieren hier
         f"fio --name=filljob "
         f"--rw=write "
         f"--bs=2M "
-        f"--numjobs={num_vdevs} "
+        f"--numjobs={numjobs} "
         f"--iodepth=64 "
         f"--size={per_file_gib}G "
         f"--filename={fio_filename_str} "
@@ -125,7 +119,7 @@ def fill_pool(level, num_vdevs):
         f"--group_reporting"
     )
 
-    print(f"[INFO] Starte fio mit {num_vdevs} Jobs, je {per_file_gib} GiB...")
+    print(f"[INFO] Starte fio mit {numjobs} Jobs, je {per_file_gib} GiB...")
     process = subprocess.Popen(fio_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     try:
         for line in process.stdout:
@@ -180,7 +174,7 @@ def delete_pool(pool_name):
 
 def main():
     dev_paths = get_valid_disk_paths()
-    if len(dev_paths) < 5: #kann noch angepasst werden
+    if len(dev_paths) < 5:
         print("[FEHLER] Nicht genug gültige Disks gefunden!")
         return
 
@@ -191,30 +185,31 @@ def main():
     for i, cfg in enumerate(configs):
         print(f"\n[CONFIG {i+1}/{len(configs)}] {cfg['zfs_syntax']}")
         for level in FILL_LEVELS:
-            try:
-                print(f"\n[TEST] {int(level*100)}% Füllstand")
-                create_pool(cfg["zpool_create_cmd"], cfg["used_disks"])
-                fill_pool(level, cfg["vdevs"])
-                duration, status = simulate_resilver(POOL_NAME, cfg["used_disks"])
-                clear_fill()
-                delete_pool(POOL_NAME)
-
-                with open(logfile, "a") as f:
-                    f.write(f"--- Konfiguration: {cfg['zfs_syntax']} | Fill: {int(level*100)}% ---\n")
-                    f.write(f"VDEVs: {cfg['vdevs']}, Data: {cfg['data']}, Children: {cfg['children']}\n")
-                    f.write(f"Resilver-Zeit: {duration:.2f} Sekunden\n")
-                    f.write(status + "\n\n")
-
-            except Exception as e:
-                print(f"[FEHLER] Test fehlgeschlagen: {e}")
+            for numjobs in NUMJOBS_LIST:
                 try:
+                    print(f"\n[TEST] {int(level*100)}% Füllstand | Numjobs: {numjobs}")
+                    create_pool(cfg["zpool_create_cmd"], cfg["used_disks"])
+                    fill_pool(level, numjobs)
+                    duration, status = simulate_resilver(POOL_NAME, cfg["used_disks"])
                     clear_fill()
                     delete_pool(POOL_NAME)
-                except:
-                    pass
-                continue
 
-    print(f"\n Alle Tests abgeschlossen: {logfile}")
+                    with open(logfile, "a") as f:
+                        f.write(f"--- Config: {cfg['zfs_syntax']} | Fill: {int(level*100)}% | Numjobs: {numjobs} ---\n")
+                        f.write(f"VDEVs: {cfg['vdevs']}, Data: {cfg['data']}, Children: {cfg['children']}\n")
+                        f.write(f"Resilver-Zeit: {duration:.2f} Sekunden\n")
+                        f.write(status + "\n\n")
+
+                except Exception as e:
+                    print(f"[FEHLER] Test fehlgeschlagen: {e}")
+                    try:
+                        clear_fill()
+                        delete_pool(POOL_NAME)
+                    except:
+                        pass
+                    continue
+
+    print(f"\n✅ Alle Tests abgeschlossen: {logfile}")
 
 if __name__ == "__main__":
     try:
