@@ -6,9 +6,9 @@ from datetime import datetime
 #test parameter festlegen
 POOL_NAME = "mypool"
 MOUNTPOINT = "/mnt/draidBenchmark"
-FILL_LEVELS = [0.05]
+FILL_LEVELS = [0.01]
 SPARES = 1
-NUMJOBS_LIST = [1, 4, 8]
+NUMJOBS_LIST = [1, 4, 8, 16, 32, 64, 128]
 
 def run_cmd(cmd, check=True):
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -16,6 +16,31 @@ def run_cmd(cmd, check=True):
         print(f"[FEHLER] Befehl fehlgeschlagen: {cmd}")
         print(result.stderr)
     return result.stdout.strip()
+
+#cashing ausstellen um geschwindigkeit nicht zu verzerren
+def tune_cache_for_benchmark():
+    print("[INFO] Setze aggressive Cache-Settings...")
+    cmds = [
+        "sysctl -w vm.dirty_ratio=2",
+        "sysctl -w vm.dirty_background_ratio=1",
+        "sysctl -w vm.dirty_expire_centisecs=100",
+        "sysctl -w vm.dirty_writeback_centisecs=100"
+    ]
+    for cmd in cmds:
+        subprocess.run(cmd, shell=True)
+
+def restore_cache_settings():
+    print("[INFO] Stelle Cache-Settings zurück...")
+    cmds = [
+        "sysctl -w vm.dirty_ratio=20",
+        "sysctl -w vm.dirty_background_ratio=10",
+        "sysctl -w vm.dirty_expire_centisecs=3000",
+        "sysctl -w vm.dirty_writeback_centisecs=500"
+    ]
+    for cmd in cmds:
+        subprocess.run(cmd, shell=True)
+
+
 
 #geht besser aber funktioniert
 def get_valid_disk_paths():
@@ -213,6 +238,7 @@ def main():
 
 if __name__ == "__main__":
     try:
+        tune_cache_for_benchmark()
         main()
     except KeyboardInterrupt:
         print("\n[ABBRUCH] Manuell gestoppt. Aufräumen...")
@@ -221,3 +247,5 @@ if __name__ == "__main__":
             delete_pool(POOL_NAME)
         except:
             print("[WARNUNG] Konnte nicht sauber aufräumen.")
+    finally:
+        restore_cache_settings()
