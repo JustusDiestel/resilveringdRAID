@@ -2,34 +2,44 @@ import subprocess
 import time
 from datetime import datetime
 
+# Dieser Code simuliert den rebuild/resilvering prozess auf dRAID Pools
+# Vor jedem Test sollte man die FILL_LEVELS Variable anpassen entsprechend den Wünschen
+
+
+#Poolname; Mountpoint; Füllstand festlegen
 POOL_NAME = "mypool"
 MOUNTPOINT = "/mnt/draidBenchmark"
 FILL_LEVELS = [0.05]  # Pool-Füllstand für Test, z. B. 5%
+SPARES = 1
+
 
 def run_cmd(cmd, check=True):
-    """Shell-Kommando ausführen."""
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     if check and result.returncode != 0:
         print(f"[FEHLER] Befehl fehlgeschlagen: {cmd}")
         print(result.stderr)
-        raise Exception("Fehler bei Kommandoausführung")
     return result.stdout.strip()
 
+
+#hier noch evtl smartctl werte einbauen um  Zombie disks zu vermeiden 
+#kann man bestimmt besser lösen aber für unsere Versuche reicht es 
 def get_valid_disk_paths():
-    """Gültige Disks suchen."""
     cmd = r'''
-for dev in /dev/sd*; do
-    [[ "$dev" =~ [0-9] ]] && continue
-    id=$(smartctl -i "$dev" 2>/dev/null | grep 'Logical Unit id' | awk '{print $4}')
-    if [[ ${#id} -eq 18 ]]; then
-        for prefix in /dev/disk/by-id/wwn-* /dev/disk/by-id/scsi-*; do
-            if [[ -e "$prefix" ]] && [[ "$(readlink -f "$prefix")" == "$(readlink -f "$dev")" ]]; then
-                echo "$prefix"
-                break
-            fi
-        done
-    fi
-done
+for dev in /dev/sd*
+    do
+        [[ "$dev" =~ [0-9] ]] && continue
+        id=$(smartctl -i "$dev" 2>/dev/null | grep 'Logical Unit id' | awk '{print $4}')
+        if [[ ${#id} -eq 18 ]]; then
+            for prefix in /dev/disk/by-id/wwn-* 
+		do
+                	if [[ -e "$prefix" ]] && [[ "$(readlink -f "$prefix")" == "$(readlink -f "$dev")" ]]
+				then
+                    		echo "$prefix"
+                    		break
+                	fi
+            	done
+        fi
+    done
     '''
     result = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True)
     if result.returncode != 0:
@@ -41,12 +51,11 @@ done
     return lines
 
 def generate_rg_configs(dev_paths):
-    """dRAID-Konfigurationen generieren."""
     total_disks = len(dev_paths)
     configs = []
 
     children = total_disks
-    spares = 0  # Worst Case → kein Spare
+    spares = SPARES
     parity = 2
     min_data = 1
     max_data = children - spares - parity
@@ -57,7 +66,7 @@ def generate_rg_configs(dev_paths):
 
         vdev_config = f"draid2:{data}d:{spares}s:{children}c"
         vdev_devs = " ".join(dev_paths)
-        zpool_cmd = (
+        zpool_cmd = ( #hier gibt es noch Optimierungsmöglichkeiten (aktuell etwa 2Gb write Bandbreite)
             f"zpool create -f -m {MOUNTPOINT} -o ashift=12 {POOL_NAME} \\\n"
             f"  {vdev_config} {vdev_devs}"
         )
@@ -73,11 +82,10 @@ def generate_rg_configs(dev_paths):
             "used_disks": dev_paths
         })
 
-    configs.sort(key=lambda x: x["data"])
+    configs.sort(key=lambda x: x["data"]) #Ich fange rein aus Ueberwachungsgründen mit den vermeindlich besseren (schnelleren) configs an. Ist eigentlich egal
     return configs
 
 def create_pool(pool_cmd, used_disks):
-    """Pool erstellen und Disks vorher bereinigen."""
     print("[INFO] Wipe alte Metadaten von Disks...")
     for disk in used_disks:
         run_cmd(f"wipefs -a {disk}", check=False)
@@ -88,7 +96,6 @@ def create_pool(pool_cmd, used_disks):
     run_cmd(f"zfs set compression=off {POOL_NAME}")
 
 def fill_pool(level, num_vdevs):
-    """Pool mit Dummy-Daten füllen."""
     print(f"[INFO] Fülle Pool zu {int(level * 100)}% mit fio...")
 
     output = run_cmd(f"zfs list -Hp -o available {POOL_NAME}")
@@ -106,7 +113,7 @@ def fill_pool(level, num_vdevs):
     filenames = [f"{MOUNTPOINT}/fillfile_{i}" for i in range(num_vdevs)]
     fio_filename_str = ":".join(filenames)
 
-    fio_cmd = (
+    fio_cmd = ( #hier gibt es noch Optimierungsmöglichkeiten 
         f"fio --name=filljob "
         f"--rw=write "
         f"--bs=2M "
@@ -133,12 +140,10 @@ def fill_pool(level, num_vdevs):
         raise Exception("fio ist mit Fehlern beendet.")
 
 def clear_fill():
-    """Dummy-Dateien löschen."""
     print("[INFO] Entferne Dummy-Dateien...")
     run_cmd(f"rm -f {MOUNTPOINT}/fillfile_*", check=False)
 
 def simulate_resilver(pool_name, used_disks):
-    """Disk löschen + wieder online bringen = Worst Case Resilver."""
     failed_path = used_disks[0]
 
     print(f"[INFO] Nehme Disk offline: {failed_path}")
@@ -157,7 +162,7 @@ def simulate_resilver(pool_name, used_disks):
     while True:
         status = run_cmd(f"zpool status {pool_name}", check=False)
         if "resilver" in status and "in progress" in status:
-            time.sleep(2)
+            time.sleep(1)
         else:
             break
     end_time = time.time()
@@ -167,7 +172,6 @@ def simulate_resilver(pool_name, used_disks):
     return duration, status
 
 def delete_pool(pool_name):
-    """Pool löschen und Prozesse beenden."""
     print("[INFO] Lösche Pool...")
     run_cmd("pkill -9 fio", check=False)
     run_cmd(f"fuser -k {MOUNTPOINT}", check=False)
@@ -176,13 +180,13 @@ def delete_pool(pool_name):
 
 def main():
     dev_paths = get_valid_disk_paths()
-    if len(dev_paths) < 5:
+    if len(dev_paths) < 5: #kann noch angepasst werden
         print("[FEHLER] Nicht genug gültige Disks gefunden!")
         return
 
     configs = generate_rg_configs(dev_paths)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    logfile = f"resilver_WorstCase_Fill:{FILL_LEVELS[0]}_{timestamp}.log"
+    timestamp = datetime.now().strftime("%Y%m%d")
+    logfile = f"resilver_WorstCaseMitWipe_Fill:{FILL_LEVELS[0]}_{timestamp}.log"
 
     for i, cfg in enumerate(configs):
         print(f"\n[CONFIG {i+1}/{len(configs)}] {cfg['zfs_syntax']}")
@@ -210,7 +214,7 @@ def main():
                     pass
                 continue
 
-    print(f"\n✅ Alle Tests abgeschlossen. Ergebnisse gespeichert in: {logfile}")
+    print(f"\n Alle Tests abgeschlossen: {logfile}")
 
 if __name__ == "__main__":
     try:
