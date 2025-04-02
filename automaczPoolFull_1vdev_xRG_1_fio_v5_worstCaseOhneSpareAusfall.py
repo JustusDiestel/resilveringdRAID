@@ -234,7 +234,7 @@ def main():
                         pass
                     continue
 
-    print(f"\n✅ Alle Tests abgeschlossen: {logfile}")
+    print(f"\n Tests abgeschlossen: {logfile}")
 
 if __name__ == "__main__":
     try:
