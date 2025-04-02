@@ -1,0 +1,822 @@
+--- Konfiguration: draid2:1d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 1, Children: 119
+Resilver-Zeit: 0.16 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:1d:119c:0s-0       DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
+--- Konfiguration: draid2:3d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 3, Children: 119
+Resilver-Zeit: 0.23 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:3d:119c:0s-0       DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
+--- Konfiguration: draid2:9d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 9, Children: 119
+Resilver-Zeit: 0.15 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:9d:119c:0s-0       DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
+--- Konfiguration: draid2:13d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 13, Children: 119
+Resilver-Zeit: 0.26 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:13d:119c:0s-0      DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
+--- Konfiguration: draid2:39d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 39, Children: 119
+Resilver-Zeit: 0.24 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:39d:119c:0s-0      DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
+--- Konfiguration: draid2:117d:0s:119c | Fill: 0% ---
+VDEVs: 1, Data: 117, Children: 119
+Resilver-Zeit: 0.24 Sekunden
+pool: mypool
+ state: DEGRADED
+status: One or more devices has been taken offline by the administrator.
+	Sufficient replicas exist for the pool to continue functioning in a
+	degraded state.
+action: Online the device using 'zpool online' or replace the device with
+	'zpool replace'.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	mypool                      DEGRADED     0     0     0
+	  draid2:117d:119c:0s-0     DEGRADED     0     0     0
+	    wwn-0x5000cca263079194  OFFLINE      0     0     0
+	    wwn-0x5000cca2620a8870  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d7c  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4934  ONLINE       0     0     0
+	    wwn-0x5000cca2620f4870  ONLINE       0     0     0
+	    wwn-0x5000cca26208a3e0  ONLINE       0     0     0
+	    wwn-0x5000cca263068680  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac4c8  ONLINE       0     0     0
+	    wwn-0x5000cca26210f418  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac51c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a78ac  ONLINE       0     0     0
+	    wwn-0x5000cca2630b0884  ONLINE       0     0     0
+	    wwn-0x5000cca26202ce74  ONLINE       0     0     0
+	    wwn-0x5000cca2620a81e4  ONLINE       0     0     0
+	    wwn-0x5000cca2620218d8  ONLINE       0     0     0
+	    wwn-0x5000cca262055620  ONLINE       0     0     0
+	    wwn-0x5000cca262024900  ONLINE       0     0     0
+	    wwn-0x5000cca26206262c  ONLINE       0     0     0
+	    wwn-0x5000cca262105218  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4b18  ONLINE       0     0     0
+	    wwn-0x5000cca262125334  ONLINE       0     0     0
+	    wwn-0x5000cca2630b50ec  ONLINE       0     0     0
+	    wwn-0x5000cca2630ac544  ONLINE       0     0     0
+	    wwn-0x5000cca26306da78  ONLINE       0     0     0
+	    wwn-0x5000cca260ba6748  ONLINE       0     0     0
+	    wwn-0x5000cca263079190  ONLINE       0     0     0
+	    wwn-0x5000cca2620e85ec  ONLINE       0     0     0
+	    wwn-0x5000cca262094040  ONLINE       0     0     0
+	    wwn-0x5000cca26212ae14  ONLINE       0     0     0
+	    wwn-0x5000cca2630686ec  ONLINE       0     0     0
+	    wwn-0x5000cca26207f034  ONLINE       0     0     0
+	    wwn-0x5000cca2620971e0  ONLINE       0     0     0
+	    wwn-0x5000cca2620d9a90  ONLINE       0     0     0
+	    wwn-0x5000cca26205846c  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f38  ONLINE       0     0     0
+	    wwn-0x5000cca262096328  ONLINE       0     0     0
+	    wwn-0x5000cca2620fca30  ONLINE       0     0     0
+	    wwn-0x5000cca2620ba98c  ONLINE       0     0     0
+	    wwn-0x5000cca2620dbc18  ONLINE       0     0     0
+	    wwn-0x5000cca26209ae08  ONLINE       0     0     0
+	    wwn-0x5000cca26207daf8  ONLINE       0     0     0
+	    wwn-0x5000cca26212c334  ONLINE       0     0     0
+	    wwn-0x5000cca262080910  ONLINE       0     0     0
+	    wwn-0x5000cca2620963a8  ONLINE       0     0     0
+	    wwn-0x5000cca26207fe54  ONLINE       0     0     0
+	    wwn-0x5000cca262096150  ONLINE       0     0     0
+	    wwn-0x5000cca2620a3d78  ONLINE       0     0     0
+	    wwn-0x5000cca262127f20  ONLINE       0     0     0
+	    wwn-0x5000cca2620a7a68  ONLINE       0     0     0
+	    wwn-0x5000cca26207d3d0  ONLINE       0     0     0
+	    wwn-0x5000cca262128694  ONLINE       0     0     0
+	    wwn-0x5000cca26207f65c  ONLINE       0     0     0
+	    wwn-0x5000cca2620639c0  ONLINE       0     0     0
+	    wwn-0x5000cca262098c04  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8068  ONLINE       0     0     0
+	    wwn-0x5000cca26207fd40  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5620  ONLINE       0     0     0
+	    wwn-0x5000cca2620d8288  ONLINE       0     0     0
+	    wwn-0x5000cca2620dae7c  ONLINE       0     0     0
+	    wwn-0x5000cca2621303d0  ONLINE       0     0     0
+	    wwn-0x5000cca2620ecef0  ONLINE       0     0     0
+	    wwn-0x5000cca26210fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca260b9cd08  ONLINE       0     0     0
+	    wwn-0x5000cca262092a98  ONLINE       0     0     0
+	    wwn-0x5000cca26212e358  ONLINE       0     0     0
+	    wwn-0x5000cca262133790  ONLINE       0     0     0
+	    wwn-0x5000cca26207e870  ONLINE       0     0     0
+	    wwn-0x5000cca2620da578  ONLINE       0     0     0
+	    wwn-0x5000cca2620b05a4  ONLINE       0     0     0
+	    wwn-0x5000cca26208c084  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8340  ONLINE       0     0     0
+	    wwn-0x5000cca2620808d4  ONLINE       0     0     0
+	    wwn-0x5000cca26210f93c  ONLINE       0     0     0
+	    wwn-0x5000cca2620cf934  ONLINE       0     0     0
+	    wwn-0x5000cca26207f8b4  ONLINE       0     0     0
+	    wwn-0x5000cca262032a14  ONLINE       0     0     0
+	    wwn-0x5000cca26207fcf0  ONLINE       0     0     0
+	    wwn-0x5000cca26207fb58  ONLINE       0     0     0
+	    wwn-0x5000cca262094570  ONLINE       0     0     0
+	    wwn-0x5000cca26206a6dc  ONLINE       0     0     0
+	    wwn-0x5000cca26207de78  ONLINE       0     0     0
+	    wwn-0x5000cca2621288a0  ONLINE       0     0     0
+	    wwn-0x5000cca262063078  ONLINE       0     0     0
+	    wwn-0x5000cca26208dab0  ONLINE       0     0     0
+	    wwn-0x5000cca26207cf74  ONLINE       0     0     0
+	    wwn-0x5000cca2609a449c  ONLINE       0     0     0
+	    wwn-0x5000cca2620b1a9c  ONLINE       0     0     0
+	    wwn-0x5000cca26209112c  ONLINE       0     0     0
+	    wwn-0x5000cca26211afa8  ONLINE       0     0     0
+	    wwn-0x5000cca2620c789c  ONLINE       0     0     0
+	    wwn-0x5000cca26207f554  ONLINE       0     0     0
+	    wwn-0x5000cca262126148  ONLINE       0     0     0
+	    wwn-0x5000cca262094540  ONLINE       0     0     0
+	    wwn-0x5000cca262094238  ONLINE       0     0     0
+	    wwn-0x5000cca262127920  ONLINE       0     0     0
+	    wwn-0x5000cca26207dfd8  ONLINE       0     0     0
+	    wwn-0x5000cca262062eb8  ONLINE       0     0     0
+	    wwn-0x5000cca2620a0a94  ONLINE       0     0     0
+	    wwn-0x5000cca262119c6c  ONLINE       0     0     0
+	    wwn-0x5000cca2620a5860  ONLINE       0     0     0
+	    wwn-0x5000cca2620a8678  ONLINE       0     0     0
+	    wwn-0x5000cca2630851a4  ONLINE       0     0     0
+	    wwn-0x5000cca2621492f4  ONLINE       0     0     0
+	    wwn-0x5000cca262062cbc  ONLINE       0     0     0
+	    wwn-0x5000cca2620d4ac8  ONLINE       0     0     0
+	    wwn-0x5000cca262116b08  ONLINE       0     0     0
+	    wwn-0x5000cca2620f8878  ONLINE       0     0     0
+	    wwn-0x5000cca2621168f0  ONLINE       0     0     0
+	    wwn-0x5000cca262100c70  ONLINE       0     0     0
+	    wwn-0x5000cca260c5cf84  ONLINE       0     0     0
+	    wwn-0x5000cca26209b6b8  ONLINE       0     0     0
+	    wwn-0x5000cca262094600  ONLINE       0     0     0
+	    wwn-0x5000cca2630b4f60  ONLINE       0     0     0
+	    wwn-0x5000cca2620a772c  ONLINE       0     0     0
+	    wwn-0x5000cca262062600  ONLINE       0     0     0
+	    wwn-0x5000cca262113810  ONLINE       0     0     0
+	    wwn-0x5000cca26210fdf8  ONLINE       0     0     0
+	    wwn-0x5000cca2620629c0  ONLINE       0     0     0
+	    wwn-0x5000cca262021878  ONLINE       0     0     0
+
+errors: No known data errors
+
